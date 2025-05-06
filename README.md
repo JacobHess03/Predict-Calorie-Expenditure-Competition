@@ -20,7 +20,7 @@ L'obiettivo è confrontare le performance di un modello basato su alberi potenzi
 ├── submission_dl.csv         # Esempio di file di submission generato da mainDL.py
 ├── requirements.txt          # Elenco delle dipendenze Python
 └── README.md                 # Questo file
-
+```
 Requisiti
 
     Python 3.8+
@@ -44,15 +44,15 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 Il file requirements.txt contiene le seguenti dipendenze:
-Plaintext
 
+```
 pandas>=1.3
 numpy>=1.21
 scikit-learn>=1.0
 xgboost>=1.6
 matplotlib>=3.4
 tensorflow>=2.8
-
+```
 Assicurati che i file train.csv e test.csv siano posizionati nella directory data/ prima di eseguire gli script.
 Script main.py – Pipeline XGBoost
 
@@ -74,10 +74,10 @@ Caratteristiche Principali:
     Predizione & Submission: Genera predizioni sul test set e crea submission.csv.
 
 Esecuzione:
-Bash
 
+```
 python main.py
-
+```
 Output Atteso:
 
     In console: parametri ottimali, metriche di validation (R², RMSE).
@@ -109,10 +109,10 @@ Caratteristiche Principali:
     Predizione & Submission: Genera predizioni sul test set e crea submission_dl.csv.
 
 Esecuzione:
-Bash
+```
 
 python mainDL.py
-
+```
 Output Atteso:
 
     In console: model.summary(), progressi dell'addestramento per epoca (loss, RMSE).
