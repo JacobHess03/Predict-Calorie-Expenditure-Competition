@@ -29,20 +29,24 @@ Requisiti
 Installazione
 
 Si raccomanda vivamente di utilizzare un ambiente virtuale per installare le dipendenze:
-Bash
 
 # Crea un ambiente virtuale (se non ne hai già uno)
+```
 python -m venv venv
-
+```
 # Attiva l'ambiente virtuale
 # Su macOS/Linux:
+```
 source venv/bin/activate
+```
 # Su Windows:
-# venv\Scripts\activate
-
+```
+venv\Scripts\activate
+```
 # Installa le dipendenze
+```
 pip install -r requirements.txt
-
+```
 Il file requirements.txt contiene le seguenti dipendenze:
 
 ```
@@ -61,16 +65,21 @@ Questo script implementa una pipeline completa di Machine Learning utilizzando i
 Caratteristiche Principali:
 
     Caricamento Dati: Legge train.csv e test.csv, conserva id.
+    
     Feature Engineering:
         Calcola BMI (Weight / Height^2).
         Crea Age_Group categorici (0-18, 19-40, 41-65, 66-100).
+        
     Preprocessing:
         Encoding Sex con LabelEncoder.
         (Opzionale) Rimozione outlier (z-score).
         Trasformazioni numeriche: StandardScaler, PowerTransformer, PolynomialFeatures (grado 2, solo interazioni).
         (Opzionale) Log-transform del target Calories.
+        
     Ottimizzazione Modello: Esegue RandomizedSearchCV (XGBoost, 15 iterazioni, CV=3) per la ricerca iperparametri.
+    
     Addestramento Finale: Addestra il miglior modello su tutto il set di training.
+    
     Predizione & Submission: Genera predizioni sul test set e crea submission.csv.
 
 Esecuzione:
@@ -90,22 +99,30 @@ Questo script utilizza TensorFlow/Keras per costruire e addestrare un modello di
 Caratteristiche Principali:
 
     Caricamento Dati: Legge train.csv e test.csv, conserva id.
+    
     Feature Engineering:
         Calcola BMI.
         Crea Age_Group.
+        
     Preprocessing:
         Encoding Sex.
         Split Train/Validation (80%/20%).
         Normalizzazione dei dati numerici con layers.Normalization() (adattato su training).
+        
     Architettura Modello (Wide & Deep):
         Input normalizzato.
         Deep Path: Dense(64, ReLU) → Dense(32, ReLU).
         Skip connection: concatenazione (Input normalizzato + Deep Path output).
         Output: Dense(1).
+        
     Compilazione: Loss mse, Optimizer Adam (lr=1e-3), Metric RootMeanSquaredError.
+    
     Callback: EarlyStopping (patience=10, val_loss), TensorBoard.
+    
     Addestramento: Addestra fino a 100 epoche con EarlyStopping e validation.
+    
     Visualizzazione: Plotta curve di training/validation con Matplotlib.
+    
     Predizione & Submission: Genera predizioni sul test set e crea submission_dl.csv.
 
 Esecuzione:
