@@ -132,4 +132,6 @@ Output Atteso:
 
     In console: model.summary(), progressi dell'addestramento per epoca (loss, RMSE).
     Grafico: Curve di training/validation.
+    ![mainDL](https://github.com/user-attachments/assets/9cb1cb4c-287c-46b4-a073-1efc6154e29f)
+
     File generato: submission_dl.csv.
