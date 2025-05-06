@@ -67,19 +67,19 @@ Questo script implementa una pipeline completa di Machine Learning utilizzando i
 
 # Caratteristiche Principali:
 
-  Caricamento dei dati dai file train.csv e test.csv.
-  Conservazione della colonna id per la submission.
-  -Feature Engineering:
-      Calcolo dell'indice di Massa Corporea (BMI: Weight / Height^2).
-      Creazione di gruppi di età categorici (Age_Group) basati su intervalli (0-18, 19-40, 41-65, 66-100).
-  -Preprocessing:
-      Encoding della variabile categoriale Sex tramite LabelEncoder.
-      Rimozione (opzionale) degli outlier basata sullo Z-score per alcune colonne numeriche.
-      Applicazione di diverse trasformazioni sui dati numerici: StandardScaler, PowerTransformer, PolynomialFeatures (grado 2, solo interazioni tra features).
-  -Ricerca Iperparametri: Utilizzo di RandomizedSearchCV per trovare una combinazione ottimale di iperparametri per il modello XGBoost (con 15 iterazioni e Cross-Validation a 3 fold).
-  -Addestramento Finale: Il miglior modello trovato tramite RandomizedSearchCV viene addestrato sull'intero set di training.
-  -Predizione: Generazione delle predizioni sul set di test.
-  -Submission: Creazione del file submission.csv nel formato richiesto dalla competizione.
+      Caricamento dei dati dai file train.csv e test.csv.
+      Conservazione della colonna id per la submission.
+      -Feature Engineering:
+          Calcolo dell'indice di Massa Corporea (BMI: Weight / Height^2).
+          Creazione di gruppi di età categorici (Age_Group) basati su intervalli (0-18, 19-40, 41-65, 66-100).
+      -Preprocessing:
+          Encoding della variabile categoriale Sex tramite LabelEncoder.
+          Rimozione (opzionale) degli outlier basata sullo Z-score per alcune colonne numeriche.
+          Applicazione di diverse trasformazioni sui dati numerici: StandardScaler, PowerTransformer, PolynomialFeatures (grado 2, solo interazioni tra features).
+      -Ricerca Iperparametri: Utilizzo di RandomizedSearchCV per trovare una combinazione ottimale di iperparametri per il modello XGBoost (con 15 iterazioni e Cross-Validation a 3 fold).
+      -Addestramento Finale: Il miglior modello trovato tramite RandomizedSearchCV viene addestrato sull'intero set di training.
+      -Predizione: Generazione delle predizioni sul set di test.
+      -Submission: Creazione del file submission.csv nel formato richiesto dalla competizione.
 
 # Esecuzione:
 Bash
