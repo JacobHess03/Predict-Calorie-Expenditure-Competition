@@ -83,7 +83,6 @@ Caratteristiche Principali:
     Predizione & Submission: Genera predizioni sul test set e crea submission.csv.
 
 Esecuzione:
-
 ```
 python main.py
 ```
@@ -127,7 +126,6 @@ Caratteristiche Principali:
 
 Esecuzione:
 ```
-
 python mainDL.py
 ```
 Output Atteso:
