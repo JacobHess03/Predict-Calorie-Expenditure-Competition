@@ -434,5 +434,53 @@ plt.show()
 
 
 # Ricerca con optuna
-# import optuna
-# from optuna import create_study
+
+
+import optuna
+from optuna.samplers import GridSampler, TPESampler
+from sklearn.datasets import load_iris
+from sklearn.model_selection import cross_val_score
+from sklearn.svm import SVC
+
+# 1) Caricamento del dataset di esempio
+X, y = load_iris(return_X_y=True)
+
+# 2) Definizione della funzione obiettivo
+def objective(trial):
+    # Spazio di ricerca: C e gamma per un SVC
+    C = trial.suggest_float("C", 1e-3, 1e3, log=True)
+    gamma = trial.suggest_float("gamma", 1e-4, 1e1, log=True)
+    model = SVC(C=C, gamma=gamma)
+    # Cross‑validation su 3 fold
+    score = cross_val_score(model, X, y, cv=3, scoring="accuracy").mean()
+    return score
+
+# 3) Grid search con Optuna
+param_grid = {
+    "C":     [0.001, 0.01, 0.1, 1, 10, 100, 1000],
+    "gamma": [0.0001, 0.001, 0.01, 0.1, 1, 10]
+}
+grid_sampler = GridSampler(param_grid)
+study_grid = optuna.create_study(
+    sampler=grid_sampler,
+    direction="maximize"
+)
+# Numero totale di prove = len(C) * len(gamma)
+study_grid.optimize(objective, n_trials=len(param_grid["C"]) * len(param_grid["gamma"]))
+
+print("Risultati Grid Search:")
+print("  Migliori parametri:", study_grid.best_params)
+print(f"  Accuracy: {study_grid.best_value:.4f}")
+
+# 4) Ricerca bayesiana (TPE) con Optuna
+tpe_sampler = TPESampler(seed=42)
+study_tpe = optuna.create_study(
+    sampler=tpe_sampler,
+    direction="maximize"
+)
+# Eseguiamo 50 prove guidate dal sampler TPE
+study_tpe.optimize(objective, n_trials=50)
+
+print("\nRisultati Ricerca Bayesiana (TPE):")
+print("  Migliori parametri:", study_tpe.best_params)
+print(f"  Accuracy: {study_tpe.best_value:.4f}")
