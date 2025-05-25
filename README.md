@@ -56,7 +56,7 @@ main.py Script – XGBoost Pipeline
 
 This script implements a complete Machine Learning pipeline using the XGBoost model.
 Key Features:
-
+    
     Data Loading: Reads train.csv and test.csv, preserving IDs.
     Feature Engineering:
         Calculates BMI (Weight / Height^2).
@@ -71,16 +71,17 @@ Key Features:
     Prediction & Submission: Generates predictions on the test set and creates submission.csv.
 
 Execution:
-Bash
 
-python main.py
+    Bash
+    
+    python main.py
 
 Expected Output:
 
     In console: optimal parameters, validation metrics (R², RMSE).
     Generated file: submission.csv.
 
-mainDL.py Script – Wide & Deep Model in Keras
+    mainDL.py Script – Wide & Deep Model in Keras
 
 This script uses TensorFlow/Keras to build and train a Deep Learning model with a Wide & Deep architecture.
 Key Features:
